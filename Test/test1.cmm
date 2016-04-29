@@ -1,13 +1,25 @@
-int inc()
-	{
-		
-		int j;
-		//ess
-		int i;//def
-		if(1)a = 1 else b = 1;
-jinrss
-		i = i +1;//seg
-/*sld
-saaa
-************/
-	}
+int func(int i,int i2)
+{
+return i;
+}
+struct s1
+{
+float x,y;
+int c;
+};
+struct s2{
+struct s3 {
+int xx;
+}ss2;
+int xx2;
+};
+int main()
+{
+int j[10];
+//int j2 = 2;
+int j3[10][10];
+struct s1 st1;
+j3[10] = j;
+st1.z= 1.1;
+//func(j[10],j2);
+}

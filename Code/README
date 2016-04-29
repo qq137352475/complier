@@ -1,0 +1,52 @@
+实验2：
+一：符号表
+定义时向符号表插入数据；
+VarDec,FunDec,VarList,ParamDec都是定义。
+ExtDef : Specifier ExtDecList SEMI
+ExtDecList 插入符号表，它的类型都是Specifier
+ExtDef : Specifier FunDec CompSt
+FunDec 插入符号表
+ExtDefList : VarDec
+VarDec 插入符号表
+StructSpecifier : Struct OptTag LC DefList RC
+OptTag,DefList插入符号表
+StrcutSpecifier : STRUCT Tag
+Tag 查表
+VarDec : ID
+ID 插入符号表
+VarDec : VarDec LB INT RB
+VarDec 插入符号表 数组的大小为INT
+FunDec ID LP VarList RP
+Def : Specifier DecList SEMI
+DecList 插入符号表
+
+OptTag : ID
+StructSpecifier : STRUCT OptTag LC Deflist RC
+将 ID 插入符号表，类型为 STRUCT 结构体符号表指针指向 Deflist
+返回 符号表指针
+
+Tag : ID
+StructSpecifier : STRUCT Tag
+查询ID 是否为STRUCT
+返回 符号表指针
+
+VarDec : ID
+VarDec : VarDec LB INT RB
+ID 为一个数组 数组符号表指针指向VarDec返回的指针
+返回 符号表指针
+ParamDec : Specifier VarDec
+将 Specifier 传给 VarDec
+返回 符号表指针
+VarList : ParamDec COMMA VarList
+VarList 符号表指针指向 ParamDec 的符号表 
+VarNext 指向VarList 的符号表
+返回符号表
+VarList : ParamDec
+同上
+
+FunDec : ID LP VarList RP
+ID 为一个函数，函数参数列表指针指向VarList
+返回 符号表指针
+FunDec : ID LP RP
+ID 为一个函数，参数列表指向NULL
+返回 符号表指针

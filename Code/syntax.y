@@ -40,7 +40,8 @@ Program         : ExtDefList {
 				child_node[i] = NULL;
 			      child_node[0] = $1;
 			      syn_node = createtree(token,lineno,n_node,child_node);
-			      if(errorno == 0)output_tree(syn_node,0);
+			      output_tree(syn_node,0);
+			      /*if(errorno == 0)*/semantic_analysis(syn_node);
 			      }
                 ;
 
@@ -208,7 +209,14 @@ OptTag		: ID {
 			      $$ = createtree(token,lineno,n_node,child_node);
 			      }
 		| {
-			      $$ = NULL;
+			      char token[20] = "OptTag";
+			      int lineno = -1;
+			      int n_node = 0;
+			      node * child_node[10];
+			      int i;
+			      for( i = 1; i <10; i++)
+				child_node[i] = NULL;
+			      $$ = createtree(token,lineno,n_node,child_node);
 			      }
 		;
 
@@ -352,7 +360,14 @@ StmtList        : Stmt StmtList {
 			      $$ = createtree(token,lineno,n_node,child_node);
 			      }
                 | {
-			      $$ = NULL;
+			      char token[20] = "StmtList";
+			      int lineno = -1;
+			      int n_node = 0;
+			      node * child_node[10];
+			      int i;
+			      for( i = 1; i <10; i++)
+				child_node[i] = NULL;
+			      $$ = createtree(token,lineno,n_node,child_node);
 			      }              
                 ;
 
@@ -456,7 +471,14 @@ DefList         : Def DefList {
 			      $$ = createtree(token,lineno,n_node,child_node);
 			      } 
                 | {
-			      $$ = NULL;
+			      char token[20] = "DefList";
+			      int lineno = -1;
+			      int n_node = 0;
+			      node * child_node[10];
+			      int i;
+			      for( i = 1; i <10; i++)
+				child_node[i] = NULL;
+			      $$ = createtree(token,lineno,n_node,child_node);
 			      }           
                 ;
 
@@ -513,7 +535,7 @@ Dec             : VarDec {
 			      $$ = createtree(token,lineno,n_node,child_node);
 			      }              
                 | VarDec ASSIGNOP Exp {
-			      char token[20] = "Stmt";
+			      char token[20] = "Dec";
 			      int lineno = $1->lineno;
 			      int n_node = 3;
 			      node * child_node[10];
